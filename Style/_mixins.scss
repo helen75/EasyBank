@@ -1,0 +1,116 @@
+$breakpoints-up: (
+  "medium": "40em",
+  "large": "64em",
+  "xlarge": "87.5em",
+);
+$breakpoints-down: (
+  "small": "39.9375em",
+  "medium": "63.9375em",
+  "large": "87.4375em",
+);
+
+@mixin breakpoint-up($size) {
+  @media (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 24px;
+
+  @include breakpoint-up(large) {
+    font-size: $font-xlg;
+  }
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 32px;
+
+  @include breakpoint-up(large) {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+p {
+  line-height: 1.5;
+  margin-bottom: 36px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1110px;
+  margin: 0 auto;
+
+  &--pall {
+    padding-top: 70px;
+    padding-right: 24px;
+    padding-bottom: 70px;
+    padding-left: 24px;
+
+    @include breakpoint-up(large) {
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+  }
+
+  &--py {
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    @include breakpoint-up(large) {
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+  }
+
+  &--px {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  &--pt {
+    padding-top: 96px;
+
+    @include breakpoint-up(large) {
+      padding-top: 96;
+    }
+  }
+  &--pr {
+    padding-right: 24px;
+  }
+  &--pb {
+    padding-bottom: 70px;
+
+    @include breakpoint-up(large) {
+      padding-bottom: 96px;
+    }
+  }
+  &--pl {
+    padding-left: 96px;
+  }
+}
+
+.flex {
+  display: flex;
+
+  &--jc-sb {
+    justify-content: space-between;
+  }
+  &--jc-c {
+    justify-content: center;
+  }
+  &--ai-c {
+    align-items: center;
+  }
+}
